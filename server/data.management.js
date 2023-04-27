@@ -270,7 +270,10 @@ router.get('/treeNode', function (req, res) {
                     options.startAt = query.startAt;
                     getObjects(objects, tokenSession, options, res, items);
                 } else {
+                     
+                    items.sort((a, b) => (a.objectKey > b.objectKey) ? 1 : -1);
                     res.json(makeTree(items, false));
+
                 }
             })
             .catch(function (error) {
